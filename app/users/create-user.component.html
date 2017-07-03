@@ -1,0 +1,13 @@
+<div class="body">
+<h1 class= "create user">Create user</h1>
+<div class="col-md-3">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+    <div class="form-group">
+      <input (ngModel)="userName" name="userName" required id="userName" type="text" class="form-control" placeholder="User Name"/>
+      <em *ngIf="ifUserExist(loginForm.value.userName)">*user already exists</em>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid || ifUserExist(loginForm.value.userName)" class="btn btn-info">Create</button>
+  </form>
+</div>
+</div>

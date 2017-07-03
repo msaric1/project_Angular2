@@ -1,0 +1,36 @@
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a [routerLink]="['/tasks']" class="navbar-brand">ididit</a>
+    </div>
+
+    <div class="collapse navbar-collapse" background-color="#fff">
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink]="['/tasks']">ALL TASKS</a>
+        </li>
+        <li><a [routerLink]="['/tasks/create']">CREATE TASK</a></li>
+      </ul>
+      <div class="navbar-header navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+
+            <a *ngIf="!auth.isAuthenticated()" [routerLink]="['users/create']">SIGN UP</a>
+            <a *ngIf="auth.isAuthenticated()" [routerLink]="['/users', auth.currentUser.id]">{{auth.currentUser.userName}}</a>
+          </li>
+          <li>
+            <a *ngIf="auth.isAuthenticated()" [routerLink]="['/users/create']">(DEV-ENV-SIGN UP)</a>
+          </li>
+        </ul>
+      </div>
+       <form id="searchForm" (ngSubmit)="searchSessions(searchPattern)" class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="searchPattern" name="searchPattern" class="form-control" placeholder="Search Users">
+                </div>
+                <button class="btn btn-default">
+          Search
+        </button>
+            </form>
+    </div>
+  </div>
+</div>

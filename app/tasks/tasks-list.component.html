@@ -1,0 +1,24 @@
+<div class="content">
+    <h1 class="counter">Users ({{users.length}}) / Tasks ({{tasks.length}})</h1>
+    <br/>
+    <table class= "table">
+        <thead>
+            <tr><td>Name</td><td *ngFor="let task of tasks">{{task.name}} </td></tr> 
+
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>
+                    <a [routerLink]="['/users', user.id]">{{user.userName}}</a>
+                </td>
+                <td *ngFor="let task of tasks" [ngClass]="{blue: getStatus(user.id,task.id)=='In Progress', green:getStatus(user.id,task.id)=='Success',orange:getStatus(user.id,task.id)==='Help me',red:getStatus(user.id,task.id)=='Pass'}"> 
+                   {{getStatus(user.id, task.id)}}
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+   
+
+</div>
+

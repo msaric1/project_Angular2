@@ -1,0 +1,39 @@
+<div>
+    <h1 >{{user?.userName}}</h1>
+
+    <table class="table">
+        <thead>
+            <tr *ngFor="let task of tasks">
+                <td>
+                    {{task?.name}}
+                </td>
+                <td (click)="updateStatus(user.id,task.id,'In Progress')">
+                    <a><label class="radio-inline">
+                       <input  type="radio" name={{task?.name}} [checked]="getStatus(user?.id,task?.id)=='In Progress'" ><a style="color:blue">In Progress</a>
+                       </label></a>
+                </td>
+                <td (click)="updateStatus(user.id,task.id,'Success')">
+                    <a> <label class="radio-inline">
+                        <input  type="radio" name={{task?.name}} [checked]="getStatus(user?.id,task?.id)=='Success'" ><a style="color:green">Success</a>
+                        </label></a>
+                </td>
+                <td (click)="updateStatus(user.id,task.id,'Help me')">
+                    <a> <label class="radio-inline">
+                        <input  type="radio" name={{task?.name}} [checked]="getStatus(user?.id,task?.id)=='Help me'"  ><a style="color:orange">Help me</a>
+                        </label></a>
+                </td>
+                <td (click)="updateStatus(user.id,task.id,'Pass')">
+                    <a> <label class="radio-inline">
+                        <input type="radio" name={{task?.name}} [checked]="getStatus(user?.id,task?.id)=='Pass'" ><a style="color:red">Pass</a>
+                        </label></a>
+                </td>
+            </tr>    
+        </thead>
+
+    </table>
+
+</div>
+
+
+
+
